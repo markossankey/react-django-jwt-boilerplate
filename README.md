@@ -1,4 +1,4 @@
-### Boilerplate code for a React / Django App requiring authentication
+# Boilerplate code for a React / Django App requiring authentication
 
 This is a boiler fullstack app using db.sqlite3, JWT authentication, Django, Django Cors Header, Django Rest Framework, React, and Axios.
 
@@ -6,7 +6,7 @@ This is a boiler fullstack app using db.sqlite3, JWT authentication, Django, Dja
 Make sure you have the most current version of Python installed
 
 ## To Use
-# Django Setup
+### Django Setup
 1. Go to this repo in Github, click the green 'Code' button, copy the HTTPS URL
 2. Open your terminal to the location that you want the code
 3. `$ git clone [url]`
@@ -18,7 +18,7 @@ Make sure you have the most current version of Python installed
 9. load test data `$ python manage.py loaddata backend_app/fixtures/data.json`
 10. start server `$ python manage.py runserver`
 
-# React Setup
+### React Setup
 10. Open new terminal window
 11. cd into frontend folder
 12. install javascript packages `$ npm install`
