@@ -13,7 +13,7 @@ function AuthProvider({ children }) {
   const test = 'this is a test'
 
   const doLogin = async (username, password) => {
-    axios.post('http://localhost:8000/api/token/', { username: username, password: password })
+    axios.post('http://localhost:8000/api/token/', { username: username, password: password }, { withCredentials: true })
       .then(res => {
         let userObj = jwt_decode(res.data.access)
         setToken(res.data.access)

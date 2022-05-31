@@ -150,3 +150,6 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
 }
+
+# Allows cookie transactions between client and server
+CORS_ALLOW_CREDENTIALS = True
