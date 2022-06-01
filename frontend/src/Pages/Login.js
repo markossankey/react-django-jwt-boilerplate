@@ -2,10 +2,10 @@ import LoginForm from "../Components/LoginForm";
 
 function Login(props) {
 
-
-
   return (
-    <LoginForm />
+    <>
+      <LoginForm />
+    </>
   )
 }
 

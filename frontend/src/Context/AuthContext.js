@@ -2,22 +2,28 @@ import { createContext, useContext, useEffect, useState } from "react"
 import { useNavigate, useLocation, Outlet } from "react-router-dom";
 import axios from 'axios'
 import jwt_decode from 'jwt-decode'
+import useAuthAxios from "../Axios/useAxios";
 
 let AuthContext = createContext(null);
 
 function AuthProvider({ children }) {
 
+  const backend = useAuthAxios()
   const navigate = useNavigate()
   const [token, setToken] = useState(null);
   const [user, setUser] = useState(null);
   const test = 'this is a test'
 
+  const handleTokenRefresh = (token) => {
+    let userObj = jwt_decode(token)
+    setToken(token)
+    setUser(userObj)
+  }
+
   const doLogin = async (username, password) => {
-    axios.post('http://localhost:8000/api/token/', { username: username, password: password }, { withCredentials: true })
+    backend.post('token/', { username: username, password: password })
       .then(res => {
-        let userObj = jwt_decode(res.data.access)
-        setToken(res.data.access)
-        setUser(userObj)
+        handleTokenRefresh(res.data.access)
         navigate('')
       })
   }

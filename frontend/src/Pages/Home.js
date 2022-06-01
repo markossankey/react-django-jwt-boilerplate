@@ -1,14 +1,16 @@
 import axios from "axios"
 import { useContext, useState } from "react"
 import { AuthContext } from "../Context/AuthContext"
+import useAuthAxios from "../Axios/useAxios"
 
 function Home(props) {
 
+  const backend = useAuthAxios()
   const { doLogout, token } = useContext(AuthContext)
   const [isTestDone, setIsTestDone] = useState(false);
 
   const doTest = async () => {
-    let response = await axios.get('http://localhost:8000/api/tests', { headers: { Authorization: `Bearer ${token}` } })
+    let response = await backend.get('tests', { headers: { Authorization: `Bearer ${token}` } })
     console.log(response)
     setIsTestDone(true)
   }

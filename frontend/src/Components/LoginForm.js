@@ -20,12 +20,14 @@ function LoginForm(props) {
         placeholder='username'
         defaultValue={username}
         onChange={(e) => setUsername(e.target.value)}
+        autoComplete='on'
       />
       <input
         type='password'
         placeholder='password'
         defaultValue={password}
         onChange={(e) => setPassword(e.target.value)}
+        autoComplete='on'
       />
       <button type='submit'>Submit</button>
     </form>
