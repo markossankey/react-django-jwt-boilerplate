@@ -153,3 +153,9 @@ REST_FRAMEWORK = {
 
 # Allows cookie transactions between client and server
 CORS_ALLOW_CREDENTIALS = True
+
+# Mainly set for testing purposes
+from datetime import timedelta
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=1)
+}

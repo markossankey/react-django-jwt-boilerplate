@@ -10,7 +10,7 @@ function Home(props) {
   const [isTestDone, setIsTestDone] = useState(false);
 
   const doTest = async () => {
-    let response = await backend.get('tests', { headers: { Authorization: `Bearer ${token}` } })
+    let response = await backend.get('tests')
     console.log(response)
     setIsTestDone(true)
   }
