@@ -24,9 +24,8 @@ const useAuthAxios = () => {
         config.headers = { Authorization: `Bearer ${newToken}` }
         authInfo.handleTokenRefresh(newToken)
       }
-      // else add access_token to request headers
+      // else add non-expired access_token to request headers
       else {
-        console.log('not expired', authInfo.user.exp, Math.floor(Date.now() / 1000))
         config.headers = { Authorization: `Bearer ${authInfo.token}` }
       }
       return config

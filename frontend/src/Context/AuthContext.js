@@ -31,6 +31,7 @@ function AuthProvider({ children }) {
   const doLogout = () => {
     setToken(null)
     setUser(null)
+    backend.delete('token/refresh/')
     navigate('/login')
   }
 
@@ -49,7 +50,19 @@ function RequireAuth() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    !auth.user && navigate('/login')
+    // try to obtain a new access token when page is refreshed, or client navigates to home page if refresh token is in httponly cookie
+    try {
+      axios.post(`${process.env.REACT_APP_API_URL}token/refresh/`, {}, { withCredentials: true })
+        .then(res => {
+          console.log('new access token', res)
+          auth.handleTokenRefresh(res.data.access)
+        })
+    }
+    // navigates user to log in if no refresh token is found
+    catch {
+      console.log('no refresh token')
+      !auth.user && navigate('/login')
+    }
   }, [])
 
   return <Outlet />
