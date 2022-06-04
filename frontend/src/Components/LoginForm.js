@@ -6,11 +6,11 @@ function LoginForm(props) {
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const { doLogin } = useContext(AuthContext)
+  const auth = useContext(AuthContext)
 
   const handleLogin = async (e) => {
-    e.preventDefault()
-    doLogin(username, password)
+    e.preventDefault();
+    auth && auth.doLogin(username, password)
   }
 
   return (
