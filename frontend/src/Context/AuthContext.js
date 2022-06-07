@@ -6,6 +6,7 @@ import useAuthAxios from "../Axios/useAxios";
 
 let AuthContext = createContext(null);
 
+
 function AuthProvider({ children }) {
 
   const backend = useAuthAxios()
@@ -14,6 +15,11 @@ function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const test = 'this is a test'
 
+  const getLoginTokens = async (username, password) => {
+    const response = await backend.post('token/', { username: username, password: password })
+    return response.data.access
+  }
+
   const handleTokenRefresh = (token) => {
     let userObj = jwt_decode(token)
     setToken(token)
@@ -21,11 +27,9 @@ function AuthProvider({ children }) {
   }
 
   const doLogin = async (username, password) => {
-    backend.post('token/', { username: username, password: password })
-      .then(res => {
-        handleTokenRefresh(res.data.access)
-        navigate('')
-      })
+    let accessToken = await getLoginTokens(username, password)
+    handleTokenRefresh(accessToken)
+    navigate('')
   }
 
   const doLogout = () => {

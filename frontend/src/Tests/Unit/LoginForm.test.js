@@ -1,5 +1,7 @@
 import { render, screen } from "@testing-library/react";
-import LoginForm from "../Components/LoginForm";
+import LoginForm from "../../Components/LoginForm";
+
+
 
 test('renders login form', async () => {
   render(<LoginForm />)
