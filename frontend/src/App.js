@@ -6,16 +6,6 @@ import Home from './Pages/Home';
 
 function App() {
 
-
-
-
-  // const getTests = async () => {
-  //   let config = accessToken == '' ? {} : { headers: { Authorization: `Bearer ${accessToken}` } }
-  //   console.log('current config (if {}, should throw err)', config)
-  //   axios.get('http://localhost:8000/api/tests', config)
-  //     .then(res => console.log('authed config', config, 'authed response', res))
-  // }
-
   return (
     <HashRouter>
       <AuthProvider>

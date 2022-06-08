@@ -60,6 +60,7 @@ function RequireAuth() {
 
     axios.post(`${process.env.REACT_APP_API_URL}token/refresh/`, {}, { withCredentials: true })
       .then(res => {
+
         // request has no refresh_token cookie ( user isn't logged in )
         if (res.request.status == 401) navigate('/login')
 
